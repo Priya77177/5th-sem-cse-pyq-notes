@@ -1,91 +1,109 @@
-a{
-  text-decoration: none;
-  display: block;
-}
-
 
 *{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Segoe UI", Arial, sans-serif;
 }
 
-/* Body */
+html, body{
+  width: 100%;
+  overflow-x: hidden; 
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* ===== BODY ===== */
 body{
-  background: linear-gradient(135deg, #667eea, #764ba2);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  background: linear-gradient(135deg, #667eea, #764ba2);
 }
 
-/* Header */
-header{
+/* ===== HEADER ===== */
+.header{
   background: #1f2937;
-  padding: 18px;
+  padding: 16px;
   text-align: center;
 }
 
-header h1{
-  color: #ffffff;
+.header h1{
+  color: #fff;
   font-size: clamp(18px, 4vw, 28px);
 }
 
-/* Container */
+/* ===== CONTAINER ===== */
 .container{
+  width: min(1100px, 100%);   
+  margin: 0 auto;
+  padding: 20px;
 
-  flex: 1;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: 20px;
-  padding: 30px;
-  max-width: 1100px;
-  margin: auto;
+  display: flex;
+  flex-direction: column;    
+  align-items: center;
+  gap: 16px;
 }
 
-/* Boxes */
-.box{
-  height: 120px;
+/* ===== CARD  ===== */
+.card{
+  width: 100%;
+  max-width: 320px;         
+  height: 110px;
+
   background: linear-gradient(135deg, #38bdf8, #2563eb);
-  color: white;
-  font-size: 22px;
-  font-weight: 600;
+  border-radius: 16px;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 16px;
-  cursor: pointer;
-  transition: all 0.35s ease;
+
+  text-decoration: none;     
+  color: #fff;
+  font-size: 22px;
+  font-weight: 600;
+
+  cursor: default;           
+  user-select: none;
+
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
   box-shadow: 0 8px 22px rgba(0,0,0,0.25);
 }
 
-/* Hover + Touch Effect */
-.box:hover,
-.box:active{
-  transform: translateY(-8px) scale(1.04);
+/* Hover / touch */
+.card:hover,
+.card:active{
+  transform: translateY(-6px);
   background: linear-gradient(135deg, #f97316, #ef4444);
   box-shadow: 0 14px 32px rgba(0,0,0,0.35);
 }
 
+/* Remove keyboard outline */
+.card:focus,
+.card:focus-visible{
+  outline: none;
+}
 
+/* ===== DESKTOP / LAPTOP ===== */
+@media (min-width: 768px){
+  .container{
+    flex-direction: row;     
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 
+  .card{
+    max-width: 180px;
+    height: 120px;
+  }
+}
 
-/* Footer */
-footer{
+/* ===== FOOTER ===== */
+.footer{
   background: #111827;
   text-align: center;
   padding: 14px;
 }
 
-footer p{
+.footer p{
   color: #d1d5db;
   font-size: 13px;
-}
-
-/* Mobile Extra Polish */
-@media (max-width: 480px){
-  .box{
-    height: 100px;
-    font-size: 20px;
-  }
 }
